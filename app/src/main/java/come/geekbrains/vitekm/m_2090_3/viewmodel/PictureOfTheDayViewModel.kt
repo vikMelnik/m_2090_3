@@ -42,6 +42,8 @@ class PictureOfTheDayViewModel (private val liveData: MutableLiveData<AppState> 
 
         override fun onFailure(call: Call<PictureOfTheDayResponseDate>, t: Throwable) {
             // TODO HW
+            liveData.postValue(AppState.Error(throw RuntimeException(" сетевой сбой сервера ")))
+            t.printStackTrace()
         }
     }
     }

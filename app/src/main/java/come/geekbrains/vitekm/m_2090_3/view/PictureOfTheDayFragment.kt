@@ -1,7 +1,8 @@
 package come.geekbrains.vitekm.m_2090_3.view
 
-import android.annotation.SuppressLint
+
 import android.content.Intent
+import android.icu.util.LocaleData
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -15,12 +16,11 @@ import come.geekbrains.vitekm.m_2090_3.R
 import come.geekbrains.vitekm.m_2090_3.databinding.FragmentPictureBinding
 import come.geekbrains.vitekm.m_2090_3.viewmodel.AppState
 import come.geekbrains.vitekm.m_2090_3.viewmodel.PictureOfTheDayViewModel
-import java.text.SimpleDateFormat
-import java.time.LocalDateTime
 import java.util.*
 
 
 class PictureOfTheDayFragment : Fragment() {
+
     private val c = Calendar.getInstance()
     private val year = c.get(Calendar.YEAR).toString()
     private val month = c.get(Calendar.MONTH).toString()
