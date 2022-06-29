@@ -19,10 +19,12 @@ class PictureOfTheDayViewModel (private val liveData: MutableLiveData<AppState> 
         return liveData
     }
 
-    fun sendRequest() {
+    fun sendRequest(date: String) {
         liveData.postValue(AppState.Loading)
-        repositoryImpl.getPictureOfTheDayApi().getPictureOfTheDay(BuildConfig.NASA_API_KEY)
+        repositoryImpl.getPictureOfTheDayApi().getPictureOfTheDayByDate(BuildConfig.NASA_API_KEY, date)
             .enqueue(callback)
+//        repositoryImpl.getPictureOfTheDayApi().getPictureOfTheDay(BuildConfig.NASA_API_KEY)
+//            .enqueue(callback)
     }
 
 
@@ -40,6 +42,8 @@ class PictureOfTheDayViewModel (private val liveData: MutableLiveData<AppState> 
 
         override fun onFailure(call: Call<PictureOfTheDayResponseDate>, t: Throwable) {
             // TODO HW
+            liveData.postValue(AppState.Error(throw RuntimeException(" сетевой сбой сервера ")))
+            t.printStackTrace()
         }
     }
     }
